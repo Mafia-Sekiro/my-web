@@ -85,6 +85,12 @@ align-items:center;
 </head>
 
 <body>
+  
+  <audio id="bgm" loop>
+    <source src="bgm.mp3" type="audio/mpeg">
+  </audio>
+  
+  <button id="musicBtn" type="button">🎵播放音乐</button>
  
 <header>
   <h1>宋智伟</h1>
@@ -132,6 +138,22 @@ align-items:center;
 </footer>
 
 <script>
+
+let bgm = 
+document.getElementById("bgm");
+let musicBtn = 
+document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click",function(){
+  if(bgm.paused){
+    bgm.play();
+    musicBtn.innerText = "⏸ 暂停音乐";
+  }
+  else{
+    bgm.pause();
+    musicBtn.innerText = "🎵 播放音乐";
+  }
+});
 
 let userCard = {
   name:"宋智伟",
