@@ -29,7 +29,7 @@ align-items:center;
 }
 
   .contact-form input,
-  .contact-form taxtarea{
+  .contact-form textarea{
     width:80%;
     max-width:400px;
   }
@@ -74,7 +74,7 @@ align-items:center;
       padding:10px;
     }
     nav {
-      flex-direction:colum;
+      flex-direction:column;
       gap:10px;
     }
     .card {
@@ -167,7 +167,7 @@ submitBtn.addEventListener("click",sayHello);
 function sayHello() {
   let nameInput = 
 document.querySelector("#username").value;
-　let emailInput =
+  let emailInput =
 document.querySelector("#useremail").value;
   let messageInput =
 document.querySelector("#usermessage").value;
@@ -214,7 +214,7 @@ document.querySelector("#usermessage").value;
    messageArray.forEach(function(msg){
      let div = 
      document.createElement("div");
-     div.style.borderbottom = "1px solid #eee";
+     div.style.borderBottom = "1px solid #eee";
      div.style.padding = "10px 0";
      div.style.textAlign = "left";
      div.innerHTML = `<strong>${msg.userName}</strong>
