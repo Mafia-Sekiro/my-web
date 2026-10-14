@@ -42,7 +42,17 @@ align-items:center;
     box-shadow:0 2px 8px
     rgba(0,0,0,0.1);
   }
-    
+  
+  .poster-img {
+  width: 100%;              /* 占满卡片宽度 */
+  max-width: 500px;         /* 最大限制，防止太大 */
+  height: auto;             /* 高度自动等比例缩放，不变形 */
+  border-radius: 10px;      /* 给图片加圆角 */
+  margin: 15px auto;        /* 上下留点空隙，左右居中 */
+  display: block;           /* 确保 margin auto 生效 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加个阴影 */
+}
+
   input,textarea {
     width:90%;
     padding:10px;
@@ -103,9 +113,11 @@ align-items:center;
 
 <main>
   <section id="about" class="card">
-    <h2>关于我</h2>
-    <p>我来自中国，在韩国读计算机硕士</p>
-  </section>
+  <h2>关于我</h2>
+  <!-- 新加的图片 -->
+  <img src="ezio.jpg" alt="Ezio" class="poster-img">
+  <p>我来自中国，在韩国读计算机硕士</p>
+</section>
   
   <section id="hobby" class="card">
     <h2>我的爱好</h2>
