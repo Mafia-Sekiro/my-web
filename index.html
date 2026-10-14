@@ -223,6 +223,17 @@ document.querySelector("#usermessage").value;
      listContainer.appendChild(div);
      });
    }
+   
+   // 页面加载时，去后端拉取已有的留言
+window.onload = function() {
+  fetch("https://my-backend-api-ws4p.onrender.com/messages")
+    .then(response => response.json())
+    .then(data => {
+      messageArray = data; // 把后端存的数据赋值给前端数组
+      renderMessages(); // 重新渲染到页面
+    })
+    .catch(error => console.error("获取留言失败：", error));
+};
 </script>
 </body>
 </html>
