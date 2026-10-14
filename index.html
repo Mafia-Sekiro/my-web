@@ -131,6 +131,10 @@ align-items:center;
       <button id="submitBtn" type="button">提交</button>
     </form>
   </section>
+  <section id="messages"class="card">
+    <h2>大家的留言</h2>
+    <div id="messageList"></div>
+  </section>
 </main>
 
 <footer>
@@ -155,11 +159,10 @@ musicBtn.addEventListener("click",function(){
   }
 });
 
-let userCard = {
-  name:"宋智伟",
-  email:"test@naver.com",
-  message:"我是全栈开发者"
-};
+let messageArray = [];
+let submitBtn = 
+document.getElementById("submitBtn");
+submitBtn.addEventListener("click",sayHello);
 
 function sayHello() {
   let nameInput = 
@@ -169,10 +172,23 @@ document.querySelector("#useremail").value;
   let messageInput =
 document.querySelector("#usermessage").value;
 
+  if (nameInput === ""){
+    alert("请先填写你的姓名哦！");
+    return;
+  }
+
   let userData = {
     userName:nameInput,
     userEmail:emailInput,
-    userMessage:messageInput};
+    userMessage:messageInput
+  };
+  
+  messageArray.unshift(userData);
+  renderMessages();
+  
+  document.querySelector("#username").value = "";
+  document.querySelector("#useremail").value = "";
+  document.querySelector("#usermessage").value = "";
     
   console.log("用户提交的数据：",userData);
   
@@ -185,19 +201,28 @@ document.querySelector("#usermessage").value;
     },
     body:JSON.stringify(userData)})
     .then(response=>response.json())
-    .then(data=>{console.log("服务器收到数据了！这是回执：",data);
-    alert("提交到服务器成功！");
-    })
+    .then(data=>{console.log("服务器收到数据了！这是回执：",data);})
     .catch(error=>{
       console.error("糟糕，出错了：",error);
-      alert("提交失败，请检查网络");
     });
-  
   }
-  
-  let btn = document.getElementById("submitBtn");
-  btn.addEventListener("click",sayHello);
 
+ function renderMessages(){
+   let listContainer = document.querySelector("#messageList");
+   listContainer.innerHTML = "";
+   
+   messageArray.forEach(function(msg){
+     let div = 
+     document.createElement("div");
+     div.style.borderbottom = "1px solid #eee";
+     div.style.padding = "10px 0";
+     div.style.textAlign = "left";
+     div.innerHTML = `<strong>${msg.userName}</strong>
+     (${msg.userEmail})<br>
+     <span>${msg.userMessage}</span>`;
+     listContainer.appendChild(div);
+     });
+   }
 </script>
 </body>
 </html>
